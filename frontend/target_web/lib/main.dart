@@ -1,18 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:window_size/window_size.dart';
+import 'code_login.dart';
 
-import 'random_code_mfa/screen.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowMaxSize(const Size(480, 800));
-    setWindowMinSize(const Size(480, 800));
-  }
-
+void main() {
   runApp(const MyApp());
 }
 
@@ -24,20 +14,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter MFA Demo',
+      title: 'MFA Login Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       navigatorObservers: [FlutterSmartDialog.observer],
       builder: FlutterSmartDialog.init(),
-      home: const MyHomePage(title: 'Flutter MFA Demo'),
+      home: const MyHomePage(title: 'MFA Target Web'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
   final String title;
 
   @override
@@ -49,9 +38,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -59,10 +52,10 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
-                  return const RandomCodeMfa();
+                  return const CodeLoginScreen();
                 }));
               },
-              title: const Text("Flutter Random Code MFA"),
+              title: const Text("Random Code MFA Login"),
               trailing: const Icon(
                 Icons.navigate_next,
                 color: Colors.black,
@@ -71,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 

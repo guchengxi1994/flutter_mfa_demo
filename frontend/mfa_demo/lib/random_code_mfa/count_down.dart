@@ -1,5 +1,7 @@
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:mfa_demo/random_code_mfa/algorithm.dart';
 import 'package:mfa_demo/random_code_mfa/algorithm_controller.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +27,11 @@ class _CountDownWidgetState extends State<CountDownWidget> {
           focusColor: Colors.transparent,
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
-          onTap: () {},
+          onTap: () {
+            Clipboard.setData(ClipboardData(
+                text: ctx.read<AlgoController>().algotithmContent?.code ?? ""));
+            SmartDialog.showToast("复制成功");
+          },
           child: CircularCountDownTimer(
             controller: controller,
             onComplete: () {

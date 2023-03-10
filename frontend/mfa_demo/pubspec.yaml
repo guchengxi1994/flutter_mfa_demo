@@ -1,5 +1,5 @@
 name: mfa_demo
-description: A new Flutter project.
+description: MFA Demo.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
@@ -20,7 +20,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_smart_dialog: ^4.9.0+1
   provider: ^6.0.3
+  window_size:
+    git:
+      url: https://gitee.com/guchengxi1994/flutter-desktop-embedding.git
+      path: plugins/window_size
+      ref: 6c66ad23ee79749f30a8eece542cf54eaf157ed8
+  
 
 dev_dependencies:
   flutter_test:

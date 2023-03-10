@@ -1,16 +1,21 @@
+pub mod controllers;
+pub mod models;
 pub mod random_code_mfa;
 pub mod route;
 pub mod utils;
-pub mod models;
-pub mod controllers;
 
+use actix_cors::Cors;
 use actix_web::{App, HttpServer};
 use route::match_code;
 
-#[tokio::main]
+#[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| App::new().service(match_code))
-        .bind(("0.0.0.0", 15285))?
-        .run()
-        .await
+    HttpServer::new(move || {
+        App::new()
+            .wrap(Cors::default().allow_any_origin().send_wildcard())
+            .service(match_code)
+    })
+    .bind(("0.0.0.0", 15285))?
+    .run()
+    .await
 }
