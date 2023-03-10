@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'code_login.dart';
+import 'one_click_login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -56,6 +57,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 }));
               },
               title: const Text("Random Code MFA Login"),
+              trailing: const Icon(
+                Icons.navigate_next,
+                color: Colors.black,
+              ),
+            )),
+            _wrapper(ListTile(
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return const OneClickLoginScreen();
+                }));
+              },
+              title: const Text("One Click MFA Login"),
               trailing: const Icon(
                 Icons.navigate_next,
                 color: Colors.black,

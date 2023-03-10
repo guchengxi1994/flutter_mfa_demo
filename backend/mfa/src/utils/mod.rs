@@ -1,3 +1,6 @@
+pub mod redis_utils;
+pub mod tests;
+
 pub struct CommonUtils;
 
 impl CommonUtils {
@@ -7,3 +10,4 @@ impl CommonUtils {
         return format!("{:?}",digest);
     }
 }
+

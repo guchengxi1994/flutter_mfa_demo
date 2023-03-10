@@ -18,6 +18,7 @@ dependencies:
   #     url: https://github.com/guchengxi1994/circular_countdown_timer
   crypto: ^3.0.2
   cupertino_icons: ^1.0.2
+  dio: ^5.0.1
   flutter:
     sdk: flutter
   flutter_smart_dialog: ^4.9.0+1

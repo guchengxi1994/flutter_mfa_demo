@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:window_size/window_size.dart';
 
+import 'one_click_mfa/screen.dart';
 import 'random_code_mfa/screen.dart';
 
 void main() async {
@@ -63,6 +64,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 }));
               },
               title: const Text("Flutter Random Code MFA"),
+              trailing: const Icon(
+                Icons.navigate_next,
+                color: Colors.black,
+              ),
+            )),
+            _wrapper(ListTile(
+              onTap: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return const OneClickScreen();
+                }));
+              },
+              title: const Text("Flutter One Click MFA"),
               trailing: const Icon(
                 Icons.navigate_next,
                 color: Colors.black,
